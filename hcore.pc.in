@@ -1,0 +1,15 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${exec_prefix}/include
+
+Name: HCORE
+Description: HiCMA CORE: Hierarchical Computations on Manycore Architectures core kernels.
+Version: @HCORE_VERSION@
+URL: http://github.com/ecrc/hcore
+Cflags: -I${includedir}
+Libs: -L${libdir} @HCORE_PKGCONFIG_LIBS@
+Libs.private: @HCORE_PKGCONFIG_LIBS_PRIVATE@
+Requires: @HCORE_PKGCONFIG_REQUIRED@
+Requires.private: @HCORE_PKGCONFIG_REQUIRED_PRIVATE@
+
