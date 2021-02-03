@@ -59,6 +59,7 @@ make package
         }
         success {
             emailext body: "${env.JOB_NAME} - Please go to ${env.BUILD_URL}", subject: "Jenkins Pipeline build OK", recipientProviders: [culprits(),requestor()]
+            build '../al4san-dev/master'
         }
     }
 }

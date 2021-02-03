@@ -24,6 +24,7 @@
 void printmat(double * A, int64_t m, int64_t n, int64_t ld, int irs, int ics);
 void printmat_format(double * A, int64_t m, int64_t n, int64_t ld, int irs, int ics, int format);
 void _printmat(double * A, int64_t m, int64_t n, int64_t ld);
+void _printmat_complex(double _Complex * A, int64_t m, int64_t n, int64_t ld);
 void check_same_array(double *L, double *R, int nelm, int line, char *file);
 
 #endif

@@ -1,6 +1,7 @@
 set( TESTINGS_SRC 
-    testing_zsyrk.c
-    testing_zgemm.c
+    testing_dsyrk.c
+    testing_dgemm.c
+    testing_dgemmcd.c
     )
 
 list(REMOVE_DUPLICATES HCORE_DEP) # WARNING: is it safe, respect order?
@@ -18,12 +19,4 @@ foreach(_testing ${TESTINGS_SRC})
     install(TARGETS ${_name_exe} DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/hcore/testing)
 
     add_test( NAME ${_name_exe} COMMAND ${_name_exe})
-    # Test
-    #if( _name_exe MATCHES "zposv")
-        #add_test( NAME ${_name_exe}
-                  #COMMAND ${_name_exe} 1 0 posv 1000 1000 200 1000 250 1e-7 0 250 250 1 1 1)
-        #set_tests_properties( ${_name_exe} PROPERTIES ENVIRONMENT "MORSE_TESTING_VERBOSE=1" )
-        #set_tests_properties( ${_name_exe} PROPERTIES LABELS "testing" )
-    #endif()
-
 endforeach()

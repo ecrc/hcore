@@ -11,7 +11,7 @@
  *
  * @version 0.1.1
  * @author Kadir Akbudak
- * @date 2019-11-10
+ * @date 2020-12-17
  **/
 #include "auxdescutil.h"
 #include <assert.h>

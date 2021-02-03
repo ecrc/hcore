@@ -3,15 +3,14 @@
  *                     All rights reserved.
  **/
 /**
- * @file hcore_zsyrk.c
+ * @file hcore_dsyrk.c
  *
  *  HCORE routines
  *  HCORE is a software package provided by King Abdullah University of Science and Technology (KAUST)
  *
- * @version 0.1.0
+ * @version 0.1.1
  * @author Kadir Akbudak
- * @date 2017-11-16
- * @precisions normal z -> c d s
+ * @date 2020-12-17
  **/
 #include <assert.h>
 #include "hcore.h"
@@ -45,7 +44,7 @@ extern int use_scratch;
  *
  * Updates flops->syrk
  */
-void HCORE_zsyrk(HCORE_enum uplo, HCORE_enum trans,
+void HCORE_dsyrk(HCORE_enum uplo, HCORE_enum trans,
                 int M, int K,
                 double alpha,
                 const double *AU, int LDAU,
@@ -58,7 +57,7 @@ void HCORE_zsyrk(HCORE_enum uplo, HCORE_enum trans,
     int64_t N = LDAU; //ASSUMPTION FIXME
     int64_t LDA = LDAU;
 
-    /*cblas_zsyrk(*/
+    /*cblas_dsyrk(*/
             /*CblasColMajor,*/
             /*(CBLAS_UPLO)uplo, (CBLAS_TRANSPOSE)trans,*/
             /*N, N,*/

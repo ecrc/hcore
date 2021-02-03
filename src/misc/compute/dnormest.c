@@ -3,21 +3,21 @@
  *                     All rights reserved.
  */
 /**
- * @file znormest.c
+ * @file dnormest.c
  *
  * This file contains the function calculating estimated norm of a matrix. 
  *
  * HCORE is a software package provided by King Abdullah University of Science and Technology (KAUST)
  *
- * @version 0.1.0
+ * @version 0.1.1
  * @author Kadir Akbudak
- * @date 2019-11-14
+ * @date 2020-12-17
  **/
-#include "auxcompute_z.h"
+#include "auxcompute_d.h"
 #include <math.h>
 #include "hcore.h"
 #include <stdio.h>
-void HCORE_znormest( int M, int N, double *A, double *e, double *work)
+void HCORE_dnormest( int M, int N, double *A, double *e, double *work)
 {
 
     //mkl_dimatcopy('R', 'T', M, N, 1.0, A, N, M);

@@ -11,8 +11,9 @@
  *
  * @version 0.1.1
  * @author Kadir Akbudak
- * @date 2019-11-10
+ * @date 2020-12-17
  **/
+#include <complex.h>
 #include "auxdescutil.h"
 int64_t nelm_limit = 100000;
 int64_t nrow_limit = 100;
@@ -99,6 +100,41 @@ void _printmat(double * A, int64_t m, int64_t n, int64_t ld){
             //printf("(%d,%d,%d) %g [%d %d %d]\t", i,j,descZ->n,A[j*descZ->n+i], descZ->m, descZ->lm, descZ->ln);
             if(j!=n-1){
                 printf(",");
+            }
+            nelm++;
+            if(nelm >= _nelm_limit){
+                printf("\n");
+                return;
+            }
+            if(j==_ncols_limit)
+                break;
+        }
+        printf("]");
+        if(i!=m-1){
+            printf(",");
+            printf("\n");
+        }
+        //printf("\n");
+        if(i==_nrows_limit)
+            break;
+    }
+    printf("]\n");
+}
+void _printmat_complex(double _Complex * A, int64_t m, int64_t n, int64_t ld){
+    printf("%s@%d M:%d N:%d LD:%d %p [\n", __FILE__, __LINE__, m, n, ld, A);
+    int64_t i, j, nelm = 0;
+    for(i=0;i<m;i++){
+        printf("[");
+        for(j=0;j<n;j++){
+            printf("%+.4f%+.4f", creal(A[j*ld+i]), cimag(A[j*ld+i]));
+            //printf("%g%+gi", creal(A[j*ld+i]), cimag(A[j*ld+i]));
+            //printf("%g ", A[j*tld(descZ)+i]);
+            //printf("%g\t", A[j*descZ->n+i]);
+            //printf("(%d,%d,%d) %g\t", i,j,descZ->mb,A[j*descZ->mb+i]);
+            //printf("(%d,%d,%d) %g\t", i,j,descZ->n,A[j*descZ->n+i]);
+            //printf("(%d,%d,%d) %g [%d %d %d]\t", i,j,descZ->n,A[j*descZ->n+i], descZ->m, descZ->lm, descZ->ln);
+            if(j!=n-1){
+               printf(",");
             }
             nelm++;
             if(nelm >= _nelm_limit){

@@ -3,14 +3,14 @@
  *                     All rights reserved.
  **/
 /**
- * @file hcore_zgemmbdcd.c
+ * @file hcore_dgemmbdcd.c
  *
  *  HCORE routines
  *  HCORE is a software package provided by King Abdullah University of Science and Technology (KAUST)
  *
  * @version 0.1.1
  * @author Kadir Akbudak
- * @date 2018-11-08
+ * @date 2020-12-17
  * @precisions normal z -> c d s
  **/
 #include <assert.h>
@@ -26,14 +26,13 @@ int gemmbdcd_print_index = 0;
 int gemmbdcd_print_mat = 0;
 
 /*
- * CD=AU*BV'. 
- * Rank of tile AU is in Ark.
- * Rank of tile BV is in Brk.
- * Multiplied tiles must have same rank.
+ * CD=AU AV BD'. 
+ * Rank of tile A is in Ark.
+ * BD is dense input.
  * CD is dense output.
  * Updates flops->update
 */
-void HCORE_zgemmbdcd(HCORE_enum transA, HCORE_enum transB,
+void HCORE_dgemmbdcd(HCORE_enum transA, HCORE_enum transB,
         int M, int N,
         double alpha, 
         double *AU, 

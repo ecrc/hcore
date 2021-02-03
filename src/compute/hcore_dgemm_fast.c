@@ -3,14 +3,14 @@
  *                     All rights reserved.
  **/
 /**
- * @file hcore_zgemm.c
+ * @file hcore_dgemm.c
  *
  *  HCORE kernels
  *  HCORE is a software package provided by King Abdullah University of Science and Technology (KAUST)
  *
- * @version 0.1.0
+ * @version 0.1.1
  * @author Kadir Akbudak
- * @date 2019-11-14
+ * @date 2020-12-17
  * @precisions normal z -> c d s
  **/
 #include <assert.h>
@@ -18,7 +18,7 @@
 #include <lapacke_utils.h>
 #endif
 
-#include "hcore_z.h"
+#include "hcore_d.h"
 
 #undef CBLAS_SADDR
 #define CBLAS_SADDR(_val) (_val)
@@ -56,7 +56,7 @@ extern void hc_printmat(double * A, int m, int n, int ld);
  *
  **/
 
-void HCORE_zgemm_fast(HCORE_enum transA, int transB,
+void HCORE_dgemm_fast(HCORE_enum transA, int transB,
         int M, int N,
         double alpha,
         double *AU,
@@ -431,11 +431,11 @@ void HCORE_zgemm_fast(HCORE_enum transA, int transB,
     //zormqr
     //ormqr
     //LAPACKE_dormqr
-    //LAPACKE_zormqr    //
+    //LAPACKE_dormqr    //
     //LAPACKE_ormqr     //
     //dunmqr
     //zunmqr
     //unmqr
     //LAPACKE_dunmqr
-    //LAPACKE_zunmqr    //
+    //LAPACKE_dunmqr    //
     //LAPACKE_unmqr     //

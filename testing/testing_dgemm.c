@@ -3,21 +3,21 @@
  *                     All rights reserved.
  **/
 /**
- * @file testing_zsyrk.c
+ * @file testing_dsyrk.c
  *
- *  Testing for HCORE_zsyrk().
+ *  Testing for HCORE_dsyrk().
  *  HCORE is a software package provided by King Abdullah University of Science and Technology (KAUST)
  *
  * @version 0.1.1
  * @author Kadir Akbudak
- * @date 2020-06-01
+ * @date 2020-12-17
  **/
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include <assert.h>
 #include "hcore.h"
-#include "hcore_z.h"
+#include "hcore_d.h"
 #include "flop_util_structs.h"
 #ifdef LAPACKE_UTILS
 #include <lapacke_utils.h>
@@ -236,7 +236,7 @@ int generate_compress(
 }
 
 /**
- * This program tests HCORE_zgemm(). 
+ * This program tests HCORE_dgemm(). 
  * The matrices are generated using LAPACKE_dlatms() (https://software.intel.com/en-us/node/534990).
  *
  * The following steps are performed:
@@ -245,11 +245,11 @@ int generate_compress(
  *  . Generate B using LAPACKE_dlatms() 
  *  . Generate C using LAPACKE_dlatms() 
  *  . Perform refC = 1.0 C - 1.0 A B using cblas_dgemm()
- *  . Perform tlrC = 1.0 (CU CV^T) - 1.0 (AU AV^T) (BU BV^T) using HCORE_zgemm()
+ *  . Perform tlrC = 1.0 (CU CV^T) - 1.0 (AU AV^T) (BU BV^T) using HCORE_dgemm()
  */
 int main(){
     int print_mat = 0;
-    printf("testing HCORE_zgemm() in HCORE library\n");
+    printf("testing HCORE_dgemm() in HCORE library\n");
     int _M = 10;
     int _N = _M; //10; //8;
     int _K = _M; //10; //9;
@@ -344,8 +344,8 @@ int main(){
     double _Brk = (double) Brk; 
     double _Crk = (double) Crk; 
 	flop_counter flops;
-	HCORE_zgemm(transA, transB, // FIXME handle these in HCORE, not in HiCMA codelets 
-            _M, _N,  // FIXME add K to HCORE_zgemm()
+	HCORE_dgemm(transA, transB, // FIXME handle these in HCORE, not in HiCMA codelets 
+            _M, _N,  // FIXME add K to HCORE_dgemm()
             alpha, 
             _AU, _AV, &_Ark, ld_A,
             _BU, _BV, &_Brk, ld_B,
