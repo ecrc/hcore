@@ -87,4 +87,15 @@ void HCORE_zuncompress(HCORE_enum transA, HCORE_enum transB,
         int LDC
         );
 
+void HCORE_zgemm_dense(HCORE_enum transA, int transB,
+                       int M, int N, int K,
+                       double _Complex alpha,
+                       const double _Complex *A,
+                       int LDA,
+                       const double _Complex *B,
+                       int LDB,
+                       double _Complex beta,
+                       double _Complex *C,
+                       int LDC);
+
 #endif

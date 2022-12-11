@@ -8,6 +8,7 @@ SET( HCORE_COMPUTE_SRC
     ${CMAKE_CURRENT_SOURCE_DIR}/compute/hcore_dsyrk.c
     ${CMAKE_CURRENT_SOURCE_DIR}/compute/hcore_dgemm_fast.c
     ${CMAKE_CURRENT_SOURCE_DIR}/compute/hcore_dgemm.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/compute/hcore_sgemm.c
     ${CMAKE_CURRENT_SOURCE_DIR}/compute/hcore_zgemm.c
     ${CMAKE_CURRENT_SOURCE_DIR}/compute/hcore_dgemmcd.c
     ${CMAKE_CURRENT_SOURCE_DIR}/compute/hcore_dgemmbdcd.c
@@ -31,7 +32,7 @@ set_target_properties( hcore PROPERTIES LINKER_LANGUAGE C )
 # Installation step
 install( TARGETS hcore
          DESTINATION lib )
-install( FILES include/hcore_z.h include/hcore_d.h include/hcore.h include/hcore_init.h 
+Install( FILES include/hcore_z.h include/hcore_d.h include/hcore_s.h include/hcore.h include/hcore_init.h 
          misc/include/flop_counts.h
          misc/include/flop_util.h
          misc/include/flop_util_structs.h

@@ -1,5 +1,5 @@
 /**
- * @copyright (c) 2017 King Abdullah University of Science and Technology (KAUST).
+ * @copyright (c) 2017-2022 King Abdullah University of Science and 
  *                     All rights reserved.
  **/
 /**
@@ -8,7 +8,7 @@
  *  HiCMA HCORE routines
  *  HiCMA is a software package provided by King Abdullah University of Science and Technology (KAUST)
  *
- * @version 0.1.1
+ * @version 0.1.2
  * @author Kadir Akbudak
  * @date 2020-12-17
  * @precisions normal z -> c d s

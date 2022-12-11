@@ -24,10 +24,10 @@ extern "C" {
  **/
 void HCORE_dgemm(HCORE_enum transA, int transB,
         int M, int N,
-        double alpha, 
-        double *AU, 
-        double *AV, 
-        double *Ark, 
+        double alpha,
+        double *AU,
+        double *AV,
+        double *Ark,
         int LDA,
         double *BU,
         double *BV,
@@ -45,7 +45,7 @@ void HCORE_dgemm(HCORE_enum transA, int transB,
         flop_counter* flops
         );
 void HCORE_dgemm_fast(HCORE_enum transA, int transB,
-        int M, int N, 
+        int M, int N,
         double alpha,
         double *AU,
         double *AV,
@@ -70,36 +70,36 @@ void HCORE_dgemmcd(
         HCORE_enum transB, //TODO trans hardcoded, implement all combinations
         int M,
         double alpha, //TODO -1.0 hardcoded, use this parameter
-        double *Au, 
-        double *Av, 
-        int Arank, 
+        double *Au,
+        double *Av,
+        int Arank,
         int LDA,
-        double *Bu, 
-        double *Bv, 
-        int Brank, 
+        double *Bu,
+        double *Bv,
+        int Brank,
         int LDB,
         double beta, //TODO 1.0 hardcoded, use this parameter
-        double *CD, 
+        double *CD,
         int LDC,
         int maxrank,
         double *work,
         flop_counter* flops);
 void HCORE_dgemmbdcd(HCORE_enum transA, HCORE_enum transB,
         int M, int N,
-        double alpha, 
-        double *AU, 
-        double *AV, 
-        double *Ark, 
+        double alpha,
+        double *AU,
+        double *AV,
+        double *Ark,
         int LDA,
-        double *BD, 
+        double *BD,
         int LDB,
-        double beta, 
-        double *CD, 
+        double beta,
+        double *CD,
         int LDC,
-        double *work, 
+        double *work,
         flop_counter* flops
         );
-void HCORE_dpotrf(HCORE_enum uplo, 
+void HCORE_dpotrf(HCORE_enum uplo,
         int N,
         double *A, int LDA,
         int *info,
@@ -114,7 +114,7 @@ void HCORE_dsyrk(HCORE_enum uplo, HCORE_enum trans,
         double* work,
         flop_counter* flops
         );
-void HCORE_dtrsm(HCORE_enum side, 
+void HCORE_dtrsm(HCORE_enum side,
         HCORE_enum uplo,
         HCORE_enum transA,
         HCORE_enum diag,
@@ -125,9 +125,9 @@ void HCORE_dtrsm(HCORE_enum side,
         flop_counter* flops);
 void HCORE_duncompress(HCORE_enum transA, HCORE_enum transB,
         int M, int N,
-        double alpha, 
-        double *AU, 
-        double *Ark, 
+        double alpha,
+        double *AU,
+        double *Ark,
         int LDA,
         double *BV,
         double *Brk,
@@ -136,7 +136,7 @@ void HCORE_duncompress(HCORE_enum transA, HCORE_enum transB,
         double *CD,
         int LDC
         );
-/** 
+/**
  * The following functions are used to perform
  * HCORE_dgemm(). These functions perform 
  * first half and second half of HCORE_dgemm()
@@ -182,7 +182,7 @@ void HCORE_dgemm_qr_svd_b_dense(int transA, int transB,
         double*      *_p__CU_save     ,
         double*      *_p_CVclone      ,
         int          *_p_ld_CVclone   ,
-        double*      *_p__CV_save     
+        double*      *_p__CV_save
 );
 void HCORE_dgemm_qr_svd(int transA, int transB,
         int M, int N,
@@ -225,7 +225,7 @@ void HCORE_dgemm_qr_svd(int transA, int transB,
         double*      *_p__CU_save     ,
         double*      *_p_CVclone      ,
         int          *_p_ld_CVclone   ,
-        double*      *_p__CV_save     
+        double*      *_p__CV_save
 );
 void HCORE_dgemm_ormqr(int transA, int transB,
         int M, int N,
@@ -265,6 +265,18 @@ void HCORE_dgemm_ormqr(int transA, int transB,
         int ld_CVclone,
         double* _CV_save
 );
+
+void HCORE_dgemm_dense(HCORE_enum transA, int transB,
+                       int M, int N, int K,
+                       double alpha,
+                       const double *A,
+                       int LDA,
+                       const double *B,
+                       int LDB,
+                       double beta,
+                       double *C,
+                       int LDC);
+
 #ifdef __cplusplus
 }
 #endif

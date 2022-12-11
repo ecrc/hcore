@@ -18,9 +18,10 @@ pipeline {
 
 module purge
 module load ecrc-extras
-module load mkl/2018-update-2
-module load gcc/5.5.0
-module load cmake/3.9.6
+module load mkl/2020.0.166
+module load gcc/10.2.0 
+module load  cmake/3.19.2  
+
 
 BASE=$WORKSPACE
 
@@ -59,7 +60,7 @@ make package
         }
         success {
             emailext body: "${env.JOB_NAME} - Please go to ${env.BUILD_URL}", subject: "Jenkins Pipeline build OK", recipientProviders: [culprits(),requestor()]
-            build '../al4san-dev/master'
+            //build '../al4san-dev/master'
         }
     }
 }

@@ -26,12 +26,12 @@ void HCORE_dtrsm(HCORE_enum side,
         HCORE_enum transA,
         HCORE_enum diag,
         int M, int Brank,
-        double alpha,
-        double *A, int LDA,
-        double *BV, int LDBV,
+        float alpha,
+        float *A, int LDA,
+        float *BV, int LDBV,
         flop_counter* flops)
 {
-    cblas_dtrsm(
+    cblas_strsm(
         CblasColMajor,
         side, uplo,
         transA, diag,
@@ -46,3 +46,5 @@ void HCORE_dtrsm(HCORE_enum side,
     else
         assert(0=="side is not CblasLeft or CblasRight");
 }
+
+

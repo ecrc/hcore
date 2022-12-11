@@ -1,5 +1,5 @@
 /**
- * @copyright (c) 2017 King Abdullah University of Science and Technology (KAUST).
+ * @copyright (c) 2017-2022 King Abdullah University of Science and 
  *                     All rights reserved.
  **/
 /**
@@ -8,7 +8,7 @@
  *  HiCMA HCORE kernels
  *  HiCMA is a software package provided by King Abdullah University of Science and Technology (KAUST)
  *
- * @version 0.1.1
+ * @version 0.1.2
  * @author Kadir Akbudak
  * @date 2020-12-17
  * @precisions normal z -> c d s
@@ -114,7 +114,7 @@ void __zqra(int _M,
     }
     info = LAPACKE_zgeqrf(
                           LAPACK_COL_MAJOR, CU_nrows, CU_ncols, _CU, ld_CU, qrtauA);
-    int myid = RUNTIME_thread_rank(NULL);
+    int myid = HICMA_RUNTIME_thread_rank(NULL);
     unsigned long int qrflop = flop_counts('q', CU_nrows, CU_ncols, 0, 0);
     flops->update += qrflop;// + multMinusOne;
     //printf("%d %d %d _M:%d\n", CU_nrows, CU_ncols, ld_CU, _M);
@@ -974,4 +974,22 @@ void HCORE_zgemm(HCORE_enum transA, int transB,
                casted_Crk, _Ark, _Brk, Crk[0], Crk[0], old_Crk, new_Crk);
     }
 }
+
+
+void HCORE_zgemm_dense(HCORE_enum transA, int transB,
+                       int M, int N, int K,
+                       double _Complex alpha,
+                       const double _Complex *A,
+                       int LDA,
+                       const double _Complex *B,
+                       int LDB,
+                       double _Complex beta,
+                       double _Complex *C,
+                       int LDC) {
+
+    cblas_sgemm(CblasColMajor, (CBLAS_TRANSPOSE )transA, (CBLAS_TRANSPOSE)transB, M, N, K,
+                alpha,A, LDA, B, LDB, beta, C, LDC);
+
+}
+
 

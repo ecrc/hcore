@@ -2,6 +2,7 @@ set( TESTINGS_SRC
     testing_dsyrk.c
     testing_dgemm.c
     testing_dgemmcd.c
+    testing_sgemm.c
     )
 
 list(REMOVE_DUPLICATES HCORE_DEP) # WARNING: is it safe, respect order?
