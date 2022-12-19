@@ -27,11 +27,11 @@
 #include "flop_util_structs.h"
 #include "flop_counts.h"
 
-int use_trmm = 0;
+extern int use_trmm;
 extern int use_scratch;
-int gemm_print_index = 0;
-int gemm_print_mat = 0;
-int hc_nelm_limit = 512;
+extern int gemm_print_index;
+extern int gemm_print_mat;
+extern int hc_nelm_limit;
 void zhc_printmat(double _Complex * A, int m, int n, int ld){
     printf("M:%d N:%d LD:%d\n[", m, n, ld);
     int i, j, nelm = 0;
@@ -114,7 +114,6 @@ void __zqra(int _M,
     }
     info = LAPACKE_zgeqrf(
                           LAPACK_COL_MAJOR, CU_nrows, CU_ncols, _CU, ld_CU, qrtauA);
-    int myid = HICMA_RUNTIME_thread_rank(NULL);
     unsigned long int qrflop = flop_counts('q', CU_nrows, CU_ncols, 0, 0);
     flops->update += qrflop;// + multMinusOne;
     //printf("%d %d %d _M:%d\n", CU_nrows, CU_ncols, ld_CU, _M);

@@ -20,8 +20,8 @@
 #undef CBLAS_SADDR
 #define CBLAS_SADDR(_val) (_val)
 
-int gemmfrk_print_index = 0;
-int gemmfrk_print_mat = 0;
+extern int gemmfrk_print_index;
+extern int gemmfrk_print_mat;
 
 /*
  * CD=AU*BV'. 
